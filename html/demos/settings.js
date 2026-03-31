@@ -51,11 +51,12 @@
 // in the presented order. The first working server will be used for
 // the whole session.
 //
-var server = null;
-if(window.location.protocol === 'http:')
-	server = "http://" + window.location.hostname + ":8088/janus";
-else
-	server = "https://" + window.location.hostname + ":8089/janus";
+var server = "https://janus.weiyuai.cn/janus";
+// var server = null;
+// if(window.location.protocol === 'http:')
+// 	server = "http://" + window.location.hostname + ":8088/janus";
+// else
+// 	server = "https://" + window.location.hostname + ":8089/janus";
 
 // When creating a Janus object, we can also specify which STUN/TURN
 // servers we'd like to use to gather additional candidates. This is
@@ -81,4 +82,10 @@ else
 // By default we leave the iceServers variable empty, which again means
 // janus.js will fallback to the Google STUN server by default:
 //
-var iceServers = null;
+// var iceServers = null;
+// Replace these demo credentials before exposing this setup to production users.
+var iceServers = [
+	{urls: "stun:coturn.weiyuai.cn:3478"},
+	{urls: "turn:coturn.weiyuai.cn:3478", username: "username1", credential: "password1"}
+];
+
